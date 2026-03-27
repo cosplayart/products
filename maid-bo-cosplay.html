@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cosplay Spider Suit</title>  
+</head>
+<body>
+  <div class="app" id="app"></div>
+
+  <script>
+    const product = {
+      title: "[🌀𝗦𝗮̆̃𝗻👉Giao Ngay⚡𝑻𝒂̣̆𝒏𝒈 𝐓𝐚̂́𝐭📌] 𝑪𝒉𝒆 𝑻𝒆̂𝒏, Maid Bộ Cosplay Nam Nữ",
+      subtitle: "Bộ cosplay Maid nam nữ chất liệu sợi tổng hợp, tông màu trắng đen, có nhiều lựa chọn size và phiên bản kèm tất hoặc không kèm tất, phù hợp đi fes, chụp ảnh hoặc hóa trang.",
+      price: 149999,
+      oldPrice: null,
+      discount: null,
+      link: "https://s.shopee.vn/3VfqKDrmga",
+      brand: "blogsuckhoe",
+      images: [
+         "https://down-vn.img.susercontent.com/file/1a250054b6321a8cb6e5e74496558fb3.webp",
+         "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-loq7q1qhxu6j24.webp",
+          "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-lg1szktgoeeve1.webp"
+      ],
+      features: [
+        {
+          icon: "🖤",
+          title: "Phong cách Maid trắng đen",
+          text: "Bộ cosplay theo phong cách Maid với tông màu trắng - đen nổi bật, phù hợp chụp ảnh, đi fes hoặc hóa trang."
+        },
+        {
+          icon: "📦",
+          title: "Set phụ kiện đầy đủ",
+          text: "Theo mô tả từ shop, sản phẩm gồm Váy + Nơ + Bờm + Tạp dề, giúp người mặc có set đồ hoàn chỉnh hơn."
+        },
+        {
+          icon: "🧵",
+          title: "Chất liệu sợi tổng hợp",
+          text: "Sản phẩm được ghi nhận sử dụng chất liệu sợi tổng hợp, thuộc danh mục đồ hóa trang."
+        },
+        {
+          icon: "📏",
+          title: "Nhiều size và phiên bản",
+          text: "Có các size S, M, L, XL, 2XL và nhiều phân loại nam nữ, có bản kèm tất và không kèm tất để dễ lựa chọn."
+        }
+      ],
+      sizes: [
+        { label: "S", note: "Có trong bảng chọn size của shop" },
+        { label: "M", note: "Có trong bảng chọn size của shop" },
+        { label: "L", note: "Có trong bảng chọn size của shop" },
+        { label: "XL", note: "Có trong bảng chọn size của shop" },
+        { label: "2XL", note: "Có trong bảng chọn size của shop" }
+      ],
+      description: [
+        "Đây là bộ cosplay Maid nam nữ được shop mô tả là hàng sẵn, có thể giao nhanh và phù hợp cho nhu cầu đi fes, chụp ảnh hoặc hóa trang.",
+        "Sản phẩm thuộc danh mục đồ hóa trang, chất liệu sợi tổng hợp, xuất xứ Trung Quốc và gửi từ Vĩnh Phúc.",
+        "Theo mô tả từ shop, bộ sản phẩm gồm váy, nơ, bờm và tạp dề, màu sắc chủ đạo là trắng - đen.",
+        "Shop có nhiều phân loại như Bộ Nữ Full Kèm Tất, Bộ Nam Full Kèm Tất, Full (không tất) Nam và Full (không tất) Nữ."
+      ],
+      notice: "Shop lưu ý khách nên nhắn chiều cao và cân nặng để được tư vấn size chuẩn. Nên giặt trước khi mặc đi fes, tuyệt đối không là/ủi sản phẩm cosplay và không giặt chung với đồ lót hoặc quần áo khác. Giá hiển thị đang ở mức từ 149.999₫ đến 169.000₫ tùy phân loại."
+    };
+
+    let currentImage = 0;
+    let currentSize = 0;
+
+    function money(value) {
+      return new Intl.NumberFormat('vi-VN').format(value) + "đ";
+    }
+
+    function openProduct() {
+      window.open(product.link, "_blank");
+    }
+
+    function changeImage(index) {
+      currentImage = index;
+      render();
+    }
+
+    function selectSize(index) {
+      currentSize = index;
+      render();
+    }
+
+    function render() {
+      const app = document.getElementById("app");
+
+      app.innerHTML = `
+        <section class="hero">
+          <div class="hero-card">
+            <div class="hero-image-wrap" onclick="openProduct()">
+              <img class="hero-image" src="${product.images[currentImage]}" alt="${product.title}">
+              <div class="overlay-top">
+                <div class="brand">${product.brand}</div>
+              </div>
+              <div class="overlay-bottom">
+                <div class="eyebrow">Bộ đồ cosplay / mobile landing</div>
+                <div class="hero-title">${product.title}</div>
+                <div class="hero-sub">${product.subtitle}</div>
+              </div>
+              <div class="counter">${currentImage + 1}/${product.images.length}</div>
+            </div>
+          </div>
+
+          <div class="thumbs">
+            ${product.images.map((img, index) => `
+              <div class="thumb ${index === currentImage ? 'active' : ''}" onclick="changeImage(${index})">
+                <img src="${img}" alt="thumb-${index + 1}">
+              </div>
+            `).join("")}
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <div class="price-row">
+              <div class="price-main">
+                <div class="sale-price"><small>₫</small>${new Intl.NumberFormat('vi-VN').format(product.price)}</div>
+                <div class="old-price">${money(product.oldPrice)}</div>
+              </div>
+              <div class="discount">${product.discount}</div>
+            </div>
+
+            <div class="product-name">${product.title}</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <div class="section-title">Điểm nổi bật</div>
+            <div class="feature-list">
+              ${product.features.map(item => `
+                <div class="feature">
+                  <div class="feature-icon">${item.icon}</div>
+                  <div>
+                    <h4>${item.title}</h4>
+                    <p>${item.text}</p>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <div class="section-title">Chọn size</div>
+            <div class="sizes">
+              ${product.sizes.map((size, index) => `
+                <button class="size-btn ${index === currentSize ? 'active' : ''}" onclick="selectSize(${index})">
+                  ${size.label}
+                </button>
+              `).join("")}
+            </div>
+            <div class="size-note">
+              Gợi ý hiện thấy: <strong>${product.sizes[currentSize].label}</strong> — ${product.sizes[currentSize].note}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <div class="section-title">Mô tả nhanh</div>
+            <div class="desc">
+              ${product.description.map(text => `<p>${text}</p>`).join("")}
+            </div>
+            <div class="notice">${product.notice}</div>
+          </div>
+        </section>
+
+        <div class="sticky-bar">
+          <button class="btn btn-outline" onclick="navigator.clipboard.writeText(product.link).then(()=>alert('Đã sao chép link'))">
+            Sao chép link
+          </button>
+          <button class="btn btn-primary" onclick="openProduct()">
+            Xem sản phẩm
+          </button>
+        </div>
+      `;
+    }
+
+    render();
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0f1117;
+      --card: #171a22;
+      --card-2: #1d2230;
+      --text: #ffffff;
+      --muted: #b9bfd1;
+      --line: rgba(255,255,255,0.08);
+      --red: #ff3b5c;
+      --red-2: #ff6b81;
+      --blue: #4cc9ff;
+      --chip: rgba(255,255,255,0.08);
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,59,92,0.22), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(76,201,255,0.16), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0f1117 0%, #131722 100%);
+      position: relative;
+      overflow-x: hidden;
+      padding-bottom: 100px;
+    }
+
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1.15;
+      background: #111;
+      cursor: pointer;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay-top {
+      position: absolute;
+      inset: 0 0 auto 0;
+      padding: 18px 16px 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.48), transparent);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 7px 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    .overlay-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18px 16px 16px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.72));
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      color: #ffd3da;
+      margin-bottom: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-size: 24px;
+      line-height: 1.18;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #e8eaf3;
+      max-width: 92%;
+    }
+
+    .counter {
+      position: absolute;
+      right: 12px;
+      bottom: 14px;
+      font-size: 12px;
+      color: #fff;
+      background: rgba(255,255,255,0.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+    }
+
+    .thumbs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 12px 0 0;
+      scrollbar-width: none;
+    }
+
+    .thumbs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .thumb {
+      flex: 0 0 72px;
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      background: #0e1016;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .thumb.active {
+      border-color: var(--red-2);
+      box-shadow: 0 0 0 3px rgba(255,107,129,0.15);
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .section {
+      padding: 16px 14px 0;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sale-price {
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .sale-price small {
+      font-size: 18px;
+      opacity: .9;
+      margin-right: 2px;
+    }
+
+    .old-price {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .discount {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      padding: 7px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .product-name {
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: var(--chip);
+      border: 1px solid var(--line);
+      color: #eef1fb;
+      font-size: 13px;
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(255,59,92,0.18), rgba(76,201,255,0.14));
+      font-size: 18px;
+    }
+
+    .feature h4 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .sizes {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .size-btn {
+      min-width: 76px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .size-btn.active {
+      background: linear-gradient(135deg, rgba(255,59,92,0.24), rgba(255,107,129,0.18));
+      border-color: rgba(255,107,129,0.5);
+      box-shadow: 0 0 0 3px rgba(255,107,129,0.12);
+    }
+
+    .size-note {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #e7eaf5;
+    }
+
+    .desc p + p {
+      margin-top: 12px;
+    }
+
+    .notice {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .sticky-bar {
+      left: 50%;
+      bottom: 0;
+      width: 100%;
+      max-width: 430px;
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(10,12,18,0.88);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      gap: 10px;
+      z-index: 20;
+    }
+
+    .btn {
+      height: 52px;
+      border: none;
+      border-radius: 18px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      color: white;
+      border: 1px solid var(--line);
+    }
+
+    .btn-primary {
+      flex: 1.35;
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      color: white;
+      box-shadow: 0 14px 30px rgba(255,59,92,0.28);
+    }
+  </style>
+</body>
+</html>
