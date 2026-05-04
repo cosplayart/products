@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quạt Cầm Tay Mini Tốc Độ Cao 100 Mức Gió Màn Hình Led Hiện Thị</title>  
+</head>
+<body>
+  <div class="app" id="app"></div>
+
+  <script>
+    const product = {
+      title: "Quạt Cầm Tay Mini Tốc Độ Cao 100 Mức Gió Màn Hình Led Hiện Thị",
+      subtitle: "Quạt cầm tay mini tốc độ cao với 100 mức gió điều chỉnh, màn hình LED hiển thị pin và tốc độ gió, pin sạc tiện lợi, thiết kế nhỏ gọn phù hợp dùng tại nhà, văn phòng hoặc mang theo khi đi chơi.",
+      price: 189000,
+      oldPrice: null,
+      discount: "",
+      link: "https://s.shopee.vn/2LUrpxnBaZ",
+      brand: "Nhiều hàng tốt",
+      images: [
+        "https://down-vn.img.susercontent.com/file/sg-11134201-7rdxy-mbo46wwk0nat09.webp",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mbrt6v1h0c4q8f.webp",
+        "https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-mbrt6v2uyanm6b.webp"
+      ],
+      features: [
+        {
+          icon: "💨",
+          title: "100 mức tốc độ gió",
+          text: "Quạt hỗ trợ điều chỉnh lên đến 100 mức gió, giúp bạn dễ dàng chọn từ làn gió nhẹ đến luồng gió mạnh tùy theo nhu cầu sử dụng."
+        },
+        {
+          icon: "🔋",
+          title: "Pin sạc tiện lợi",
+          text: "Tích hợp pin dung lượng 1000mAh, hỗ trợ sạc qua USB, có thể kết nối với máy tính, pin dự phòng hoặc củ sạc thông thường."
+        },
+        {
+          icon: "📟",
+          title: "Màn hình LED hiển thị",
+          text: "Màn hình kỹ thuật số hiển thị phần trăm pin và tốc độ gió rõ nét, giúp bạn dễ dàng theo dõi trạng thái hoạt động của quạt."
+        },
+        {
+          icon: "🤫",
+          title: "Vận hành êm ái",
+          text: "Sử dụng động cơ không chổi than và thiết kế không cánh, độ ồn chỉ từ khoảng 36 dB, phù hợp khi làm việc, đọc sách hoặc nghỉ ngơi."
+        }
+      ],
+      sizes: [
+        { label: "GS5-Xám", note: "Màu xám" },
+        { label: "GS5-Hồng", note: "Màu hồng" },
+        { label: "GS5-Trắng", note: "Màu trắng" }
+      ],
+      description: [
+        "Tên sản phẩm: Quạt Cầm Tay Mini Tốc Độ Cao 100 Mức Gió Màn Hình Led Hiện Thị, Quạt Tích Điện Pin Dung Lượng Lớn.",
+        "Quạt có thiết kế nhỏ gọn với kích thước khoảng 16.5 x 6.4 x 5.9cm, dễ dàng mang theo khi đi làm, đi học, đi chơi, dã ngoại hoặc cắm trại ngoài trời.",
+        "Sản phẩm sử dụng động cơ không chổi than, thiết kế không cánh hiện đại, vận hành êm ái với độ ồn chỉ từ khoảng 36 dB.",
+        "Quạt hỗ trợ 100 mức tốc độ gió điều chỉnh linh hoạt, đáp ứng nhiều nhu cầu làm mát khác nhau trong sinh hoạt hằng ngày.",
+        "Thông số kỹ thuật: đầu vào 5V-1A, công suất định mức 5W, thời gian sạc khoảng 2 giờ, thời gian sử dụng khoảng 3 đến 6 giờ tùy mức gió.",
+        "Pin tích hợp dung lượng 1000mAh, hỗ trợ sạc điện qua cổng USB, tiện lợi khi dùng cùng máy tính, pin dự phòng hoặc ổ cắm.",
+        "Màn hình kỹ thuật số hiển thị phần trăm pin và tốc độ gió với độ nét cao, giúp người dùng dễ dàng kiểm soát trong quá trình sử dụng.",
+        "Sản phẩm bao gồm: 1 quạt mini cầm tay và 1 dây sạc."
+      ],
+      notice: "Loại bảo hành: bảo hành nhà sản xuất. Xuất xứ: Trung Quốc. Gửi từ Thành phố Hà Nội. Sản phẩm phù hợp sử dụng tại nhà, văn phòng, khi di chuyển hoặc trong các hoạt động ngoài trời."
+    };
+
+    let currentImage = 0;
+    let currentSize = 0;
+
+    function money(value) {
+      return new Intl.NumberFormat('vi-VN').format(value) + "đ";
+    }
+
+    function openProduct() {
+      window.open(product.link, "_blank");
+    }
+
+    function changeImage(index) {
+      currentImage = index;
+      render();
+    }
+
+    function selectSize(index) {
+      currentSize = index;
+      render();
+    }
+
+    function render() {
+      const app = document.getElementById("app");
+
+      app.innerHTML = `
+        <section class="hero">
+          <div class="hero-card">
+            <div class="hero-image-wrap" onclick="openProduct()">
+              <img class="hero-image" src="${product.images[currentImage]}" alt="${product.title}">
+              <div class="overlay-top">
+                <div class="brand">${product.brand}</div>
+              </div>           
+              <div class="counter">${currentImage + 1}/${product.images.length}</div>
+            </div>
+          </div>
+
+          <div class="thumbs">
+            ${product.images.map((img, index) => `
+              <div class="thumb ${index === currentImage ? 'active' : ''}" onclick="changeImage(${index})">
+                <img src="${img}" alt="thumb-${index + 1}">
+              </div>
+            `).join("")}
+          </div>
+          <div class="overlay-bottom">
+                <div class="eyebrow">Mô hình trang trí / mobile landing</div>
+                <div class="hero-title">${product.title}</div>
+                <div class="hero-sub">${product.subtitle}</div>
+              </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <div class="price-row">
+              <div class="price-main">
+                <div class="sale-price"><small>₫</small>${new Intl.NumberFormat('vi-VN').format(product.price)}</div>
+                ${product.oldPrice ? `<div class="old-price">${money(product.oldPrice)}</div>` : ''}
+              </div>
+              ${product.discount ? `<div class="discount">${product.discount}</div>` : ''}
+            </div>
+
+            <div class="product-name">${product.title}</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <div class="section-title">Điểm nổi bật</div>
+            <div class="feature-list">
+              ${product.features.map(item => `
+                <div class="feature">
+                  <div class="feature-icon">${item.icon}</div>
+                  <div>
+                    <h4>${item.title}</h4>
+                    <p>${item.text}</p>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <div class="section-title">Chọn size</div>
+            <div class="sizes">
+              ${product.sizes.map((size, index) => `
+                <button class="size-btn ${index === currentSize ? 'active' : ''}" onclick="selectSize(${index})">
+                  ${size.label}
+                </button>
+              `).join("")}
+            </div>
+            <div class="size-note">
+              Gợi ý hiện thấy: <strong>${product.sizes[currentSize].label}</strong> — ${product.sizes[currentSize].note}
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="card">
+            <div class="section-title">Mô tả nhanh</div>
+            <div class="desc">
+              ${product.description.map(text => `<p>${text}</p>`).join("")}
+            </div>
+            <div class="notice">${product.notice}</div>
+          </div>
+        </section>
+
+        <div class="sticky-bar">
+          <button class="btn btn-outline" onclick="navigator.clipboard.writeText(product.link).then(()=>alert('Đã sao chép link'))">
+            Sao chép link
+          </button>
+          <button class="btn btn-primary" onclick="openProduct()">
+            Xem sản phẩm
+          </button>
+        </div>
+      `;
+    }
+
+    render();
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0f1117;
+      --card: #171a22;
+      --card-2: #1d2230;
+      --text: #ffffff;
+      --muted: #b9bfd1;
+      --line: rgba(255,255,255,0.08);
+      --red: #ff3b5c;
+      --red-2: #ff6b81;
+      --blue: #4cc9ff;
+      --chip: rgba(255,255,255,0.08);
+      --shadow: 0 16px 40px rgba(0,0,0,0.35);
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,59,92,0.22), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(76,201,255,0.16), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0f1117 0%, #131722 100%);
+      position: relative;
+      overflow-x: hidden;
+      padding-bottom: 100px;
+    }
+
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      aspect-ratio: 1 / 1.15;
+      background: #111;
+      cursor: pointer;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay-top {
+      position: absolute;
+      inset: 0 0 auto 0;
+      padding: 18px 16px 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.48), transparent);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 7px 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    .overlay-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18px 16px 16px;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.72));
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      color: #ffd3da;
+      margin-bottom: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-size: 24px;
+      line-height: 1.18;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #e8eaf3;
+      max-width: 92%;
+    }
+
+    .counter {
+      position: absolute;
+      right: 12px;
+      bottom: 14px;
+      font-size: 12px;
+      color: #fff;
+      background: rgba(255,255,255,0.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+    }
+
+    .thumbs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 12px 0 0;
+      scrollbar-width: none;
+    }
+
+    .thumbs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .thumb {
+      flex: 0 0 72px;
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      background: #0e1016;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .thumb.active {
+      border-color: var(--red-2);
+      box-shadow: 0 0 0 3px rgba(255,107,129,0.15);
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .section {
+      padding: 16px 14px 0;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sale-price {
+      font-size: 34px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .sale-price small {
+      font-size: 18px;
+      opacity: .9;
+      margin-right: 2px;
+    }
+
+    .old-price {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .discount {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      padding: 7px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .product-name {
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .chips {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: var(--chip);
+      border: 1px solid var(--line);
+      color: #eef1fb;
+      font-size: 13px;
+      padding: 9px 12px;
+      border-radius: 999px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(255,59,92,0.18), rgba(76,201,255,0.14));
+      font-size: 18px;
+    }
+
+    .feature h4 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+
+    .feature p {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .sizes {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .size-btn {
+      min-width: 76px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .size-btn.active {
+      background: linear-gradient(135deg, rgba(255,59,92,0.24), rgba(255,107,129,0.18));
+      border-color: rgba(255,107,129,0.5);
+      box-shadow: 0 0 0 3px rgba(255,107,129,0.12);
+    }
+
+    .size-note {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #e7eaf5;
+    }
+
+    .desc p + p {
+      margin-top: 12px;
+    }
+
+    .notice {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .sticky-bar {
+      left: 50%;
+      bottom: 0;
+      width: 100%;
+      max-width: 430px;
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+      background: rgba(10,12,18,0.88);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      gap: 10px;
+      z-index: 20;
+    }
+
+    .btn {
+      height: 52px;
+      border: none;
+      border-radius: 18px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      color: white;
+      border: 1px solid var(--line);
+    }
+
+    .btn-primary {
+      flex: 1.35;
+      background: linear-gradient(135deg, var(--red), var(--red-2));
+      color: white;
+      box-shadow: 0 14px 30px rgba(255,59,92,0.28);
+    }
+  </style>
+</body>
+</html>
